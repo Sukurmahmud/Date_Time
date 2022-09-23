@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date And Time</title>
+</head>
+<body>
+    <!--- project of javascript Time and Date-->
+    <div class="MyWatch">
+        <span class="time"></span><br><br>
+        <span class="date"></span>
+
+        <script>
+            function MyTime(){
+                var myDate = new Date();
+                var hours , min = (myDate.getMinutes() <10)? "0" + myDate.getMinutes() : myDate.getMinutes();
+                var sec = (myDate.getSeconds() <10)? "0" +myDate.getSeconds() :myDate.getSeconds();
+                var PmAm = (myDate.getHours() >=12)? "PM":"AM";
+                if(myDate.getHours() == 0){
+                    hours = 12;
+
+
+                }else if(myDate.getHours()<12){
+                    hours = myDate.getHours()-12;
+
+                }else{
+                    hours = myDate.getHours();
+                }
+                var CurrentTime = hours + " :" + min + " :" + sec + "   " + PmAm;
+                var ok = document.getElementsByClassName("time")[0].innerHTML = CurrentTime;
+                //console.log(ok);
+
+                var myDay = ["Sunday","Monday","Tuesday","Wednesday","Thursday", "friday","saturday"];
+                var myMonth =["january","february","March","april","May","Jun","July","September","October","November","December"];
+                var day = myDate.getDate();
+                var C_Time = myDay[myDate.getDay()] + " ," + myMonth[myDate.getMonth()] + " " + day;
+                 document.getElementsByClassName("date")[0].innerHTML = C_Time;
+                 //console.log(o);
+
+
+            }
+
+
+            MyTime();
+            setInterval(function(){
+                MyTime();
+            },1000);
+        </script>
+
+    </div>
+    
+</body>
+</html>
